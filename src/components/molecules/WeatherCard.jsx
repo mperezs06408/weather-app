@@ -48,6 +48,17 @@ function WeatherCard() {
                     <Loader />
                 </article>
             }
+            {
+                error &&
+                <article className="weatherCard">
+                    <div className="weatherCard__main">
+                        <h1 className="weatherCard__city">reload and try again</h1>
+                        <h2 className="weatherCard__temp">404 error :(</h2>
+                    </div>
+                    <div className="weatherCard__info">
+                    </div>
+                </article>
+            }
         </>
     )
 }
