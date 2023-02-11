@@ -51,6 +51,7 @@ export const getCityWeather = (cityInfo) => {
                         max_temp:
                         `${cityWeatherInfo.main.temp_max} °${format.id}`,
                         main: cityWeatherInfo.weather[0].main,
+                        icon: cityWeatherInfo.weather[0].icon,
                         sunriseHour: 
                         `${citySunriseHour.getHours()<10?'0':''}${citySunriseHour.getHours()}:${citySunriseHour.getMinutes()<10?'0':''}${citySunriseHour.getMinutes()}`,
                         sunsetHour:

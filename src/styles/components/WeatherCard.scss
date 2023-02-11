@@ -2,17 +2,18 @@
 
 .weatherCard{
     position: relative;
-    background-color: $white;
+    background-color: rgba($text-color,.8);
     color: $text-color;
     width: 100%;
     border: 2px solid $selected-color-clear;
     border-radius: 10px;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
 
     &__main{
         display: grid;
-
+        color: $white;
         margin-bottom: 15px;
     }
 
@@ -20,26 +21,30 @@
         position: absolute;
         top: 10px;
         right: 10px;
-        color: rgba($text-color,0.5);
+        color: rgba($white,0.5);
         font-size: 0.8rem;
         text-transform: capitalize;
     }
 
     &__city{
-        padding: 10px;
+        padding: 20px 10px 0;
     }
 
     &__temp{
         font-size: 3rem;
-        color: $selected-color;
         padding: 0 10px;
+    }
+
+    &__img{
+        position: absolute;
+        top:30px;
+        right: 10px;
     }
     
     &__state{
         position: absolute;
         top: 70px;
         right: 10px;
-        color: $selected-color;
     }
 
     &__tempVariables{
@@ -50,8 +55,8 @@
     }
 
     &__info{
-        background-color: $selected-color-clear;
         display: grid;
+        background-color: rgba($white, 1);
         gap: 5px;
         grid-template-columns: 1fr 1fr;
         padding: 10px 0;

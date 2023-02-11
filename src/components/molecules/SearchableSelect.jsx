@@ -19,13 +19,13 @@ function SearchableSelect() {
     }
 
     const loadOptions = async (inputValue) => {
-        const request = await citiesInstance.get(`${getCities}?namePrefix=${inputValue}`, options)
+        const request = await citiesInstance.get(`${getCities}?namePrefix=${inputValue}&minPopulation=1000000`, options)
         const response = request.data
 
         const citiesList = response.data.map((city) => 
             ({
                 value: `${city.latitude};${city.longitude}`,
-                label: `${city.name}, ${city.countryCode}`
+                label: `${city.name}`
             })
         )
         const selectOptions = {
@@ -40,8 +40,10 @@ function SearchableSelect() {
         <section className="search">
             <p className="search__label">Search your city:</p>
             <AsyncPaginate 
+                pageSize={10}
                 placeholder='Search a city'
                 debounceTimeout={600}
+                additional={10}
                 value={info}
                 onChange={handleChange}
                 loadOptions={loadOptions}

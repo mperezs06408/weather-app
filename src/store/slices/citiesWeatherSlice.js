@@ -27,6 +27,7 @@ const initialState = {
             min_temp:'',
             max_temp:'',
             main:'',
+            icon:'',
             sunriseHour: '',
             sunsetHour: '',
             humidity:'',
