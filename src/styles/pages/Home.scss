@@ -1,0 +1,36 @@
+@import '@styles/variables';
+
+main{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px auto 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 25px;
+
+    @media screen and (min-width: $medium){
+        width: $medium;
+        margin: auto;
+        grid-template-areas: 
+        "search card"
+        "switch card";
+        grid-template-columns: 35% 65%;
+        grid-template-rows: 1fr 1fr;
+        gap:15px;
+
+        .switch{
+            grid-area: switch;
+            align-self: start;
+        }
+        .search{
+            grid-area: search;
+            align-self: end;
+        }
+        .weatherCard{
+            grid-area: card;
+            align-self: center;
+        }
+    }
+}

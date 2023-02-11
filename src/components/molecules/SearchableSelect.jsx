@@ -1,10 +1,21 @@
 import { citiesInstance, options, getCities } from "../../api/geoCitiesAPI";
 import { AsyncPaginate } from "react-select-async-paginate";
+import { useSelector, useDispatch } from 'react-redux';
+import { getCityWeather } from "@/store/thunks/citiesWeatherThunk";
+import '@styles/components/SearchableSelect.scss'
 
-function SearchableSelect({value, setValue, parentAction}) {
+function SearchableSelect() {
+    const {
+        city
+    } = useSelector(state => state.citiesWeather)
+    const {
+        info
+    } = city
+    const dispatch = useDispatch();
+
+
     const handleChange = (searchedElement) => {
-        setValue(searchedElement);
-        parentAction(searchedElement);
+        dispatch( getCityWeather(searchedElement) )
     }
 
     const loadOptions = async (inputValue) => {
@@ -24,14 +35,18 @@ function SearchableSelect({value, setValue, parentAction}) {
         return selectOptions
     }
 
+
     return(
-        <AsyncPaginate 
-            placeholder='Search a city'
-            debounceTimeout={600}
-            value={value}
-            onChange={handleChange}
-            loadOptions={loadOptions}
-        />
+        <section className="search">
+            <p className="search__label">Search your city:</p>
+            <AsyncPaginate 
+                placeholder='Search a city'
+                debounceTimeout={600}
+                value={info}
+                onChange={handleChange}
+                loadOptions={loadOptions}
+            />
+        </section>
     )
 }
 
