@@ -2,6 +2,7 @@ import HomeTemplate from "@components/templates/HomeTemplate";
 import SwitchFormat from "@components/atoms/SwitchFormat";
 import SearchableSelect from "@components/molecules/SearchableSelect";
 import WeatherCard from '@components/molecules/WeatherCard';
+import Resume from "../components/molecules/Resume";
 import { getCityWeather } from "../store/thunks/citiesWeatherThunk";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,6 +27,7 @@ function Home(){
             <SwitchFormat />
             <SearchableSelect />
             <WeatherCard />
+            <Resume />
         </HomeTemplate>
     )
 }
