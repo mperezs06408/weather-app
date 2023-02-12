@@ -1,0 +1,34 @@
+@import '@styles/variables';
+
+.resume{
+    &__card{
+        background-color: rgba($text-color, .5);
+        color: $white;
+        text-align: center;
+        width: 110px;
+        height: 110px;
+        flex:none;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+
+        &:hover{
+            background-color: $text-color;
+            cursor: pointer;
+        }
+        &:active{
+            background-color: rgba($selected-color, .5);
+        }
+    }
+
+    &__city{
+        font-size: 1rem;
+    }
+
+    &__temp{
+        font-size: 1.2rem;
+    }
+    &__lastUpdate{
+        font-size: .8rem;
+    }
+}

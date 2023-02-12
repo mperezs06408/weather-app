@@ -18,11 +18,15 @@ export const getCityWeather = (cityInfo) => {
             label
         } = cityInfo
 
-        const cache_id = `${label} ${format.id}`;
+        const cache_id = `${label};${format.id}`;
         console.log(cache_id)
 
         
-        const cacheItem = cache[cache_id]
+        // const cacheItem = cache[cache_id]
+
+        const cacheItem = cache.find(cityRegister => cityRegister.id === cache_id)
+
+        console.log(cacheItem)
 
         if (!cacheItem) {
             const [latitude, longitude] = value.split(';');
@@ -70,7 +74,7 @@ export const getCityWeather = (cityInfo) => {
             }
         } else {
             const {
-                city
+                values: city
             } = cacheItem;
 
             dispatch( selectCityToFetch(city) )

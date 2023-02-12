@@ -35,7 +35,7 @@ const initialState = {
         }
     },
     format: metrics.celsius,
-    cache: {},
+    cache: [],
     isLoading:false,
     error:false
 }
@@ -64,14 +64,21 @@ const reducers = {
             format
         } = state;
 
-        const cache_id = `${city.info.label} ${format.id}`;
+        const cache_id = `${city.info.label};${format.id}`;
 
-        state.cache = {
-            ...state.cache,
-            [cache_id]: {
-                city
+        const newCityCache = {
+            id: cache_id,
+            values: {
+                ...city
             }
         }
+        // state.cache = {
+        //     ...state.cache,
+        //     [cache_id]: {
+        //         city
+        //     }
+        // }
+        state.cache.push(newCityCache);
     }
 }
 
