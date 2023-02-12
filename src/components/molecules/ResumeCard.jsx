@@ -25,7 +25,7 @@ function ResumeCard({id, cityName, currentTemp, icon, lastUpdateHour, handleClic
                 src={`http://openweathermap.org/img/wn/${icon}.png`} 
                 className='resume__icon'
             />
-            <h3 className='resume__lastUpdate'>Updated: {lastUpdateHour}</h3>
+            <h3 className='resume__lastUpdate'>{lastUpdateHour}</h3>
         </button>
     )
 }

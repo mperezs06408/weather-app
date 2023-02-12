@@ -19,14 +19,11 @@ export const getCityWeather = (cityInfo) => {
         } = cityInfo
 
         const cache_id = `${label};${format.id}`;
-        console.log(cache_id)
 
         
         // const cacheItem = cache[cache_id]
 
         const cacheItem = cache.find(cityRegister => cityRegister.id === cache_id)
-
-        console.log(cacheItem)
 
         if (!cacheItem) {
             const [latitude, longitude] = value.split(';');
@@ -37,8 +34,6 @@ export const getCityWeather = (cityInfo) => {
                 const citylastUpdateHour = new Date(cityWeatherInfo.dt * 1000)
                 const citySunriseHour = new Date(cityWeatherInfo.sys.sunrise * 1000)
                 const citySunsetHour = new Date(cityWeatherInfo.sys.sunset * 1000);
-
-                console.log(cityWeatherInfo.weather[0],'main')
         
                 const newCityInfo = {
                     info: {
