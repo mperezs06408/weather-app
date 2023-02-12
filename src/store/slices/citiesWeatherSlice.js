@@ -72,12 +72,6 @@ const reducers = {
                 ...city
             }
         }
-        // state.cache = {
-        //     ...state.cache,
-        //     [cache_id]: {
-        //         city
-        //     }
-        // }
         state.cache.push(newCityCache);
     }
 }
