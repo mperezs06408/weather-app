@@ -1,5 +1,6 @@
 import InfoLabels from "../atoms/InfoLabels"
 import { useSelector } from 'react-redux';
+import { getWeatherIcon } from "@/api/openWeatheAPI";
 import Loader from "@components/atoms/Loader";
 import '@styles/components/WeatherCard.scss'
 
@@ -20,7 +21,7 @@ function WeatherCard() {
                         <span className="weatherCard__lastUpdate">last update: {weather.lastUpdateHour}</span>
                         <h1 className="weatherCard__city">{info.label}</h1>
                         <h2 className="weatherCard__temp">{weather.current_temp}</h2>
-                        <img src={`http://openweathermap.org/img/wn/${weather.icon}.png`} alt={weather.icon} className="weatherCard__img" />
+                        <img src={getWeatherIcon(weather.icon)} alt={weather.icon} className="weatherCard__img" />
                         <h2 className="weatherCard__state">{weather.main}</h2>
                         <span className="weatherCard__tempVariables">{weather.min_temp} / {weather.max_temp}</span>
                     </div>

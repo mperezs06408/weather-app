@@ -1,3 +1,4 @@
+import { getWeatherIcon } from '@/api/openWeatheAPI';
 import '@styles/components/ResumeCard.scss';
 
 function ResumeCard({id, cityName, currentTemp, icon, lastUpdateHour, handleClick}){
@@ -22,7 +23,7 @@ function ResumeCard({id, cityName, currentTemp, icon, lastUpdateHour, handleClic
             <h2 className='resume__temp'>{currentTemp}</h2>
             <img 
                 alt={icon} 
-                src={`http://openweathermap.org/img/wn/${icon}.png`} 
+                src={getWeatherIcon(icon)} 
                 className='resume__icon'
             />
             <h3 className='resume__lastUpdate'>{lastUpdateHour}</h3>

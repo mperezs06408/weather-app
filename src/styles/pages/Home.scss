@@ -8,16 +8,17 @@ main{
     grid-template-rows: 60px auto 1fr;
     align-items: center;
     justify-items: center;
-    padding: 25px 25px 115px;
+    padding: 25px 25px 135px;
 
     @media screen and (min-width: $medium){
         width: $medium;
         margin: auto;
         grid-template-areas: 
         "search card"
-        "switch card";
+        "switch card"
+        "forecast forecast";
         grid-template-columns: 35% 65%;
-        grid-template-rows: 1fr 1fr 50px;
+        grid-template-rows: 1fr 1fr auto;
         gap:15px;
 
         .switch{
@@ -31,6 +32,9 @@ main{
         .weatherCard{
             grid-area: card;
             align-self: center;
+        }
+        .forecast{
+            grid-area: forecast;
         }
     }
 

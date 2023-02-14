@@ -32,7 +32,8 @@ const initialState = {
             sunsetHour: '',
             humidity:'',
             windSpeed: ''
-        }
+        },
+        forecast: []
     },
     format: metrics.celsius,
     cache: [],

@@ -1,5 +1,17 @@
 import { onLoadingInfo, onErrorDuringFetching, selectCityToFetch, setCache } from "../slices/citiesWeatherSlice";
-import { getCityWeatherInfo } from "@/api/openWeatheAPI";
+import { getCityWeatherInfo, getCityWeatherForecast } from "@/api/openWeatheAPI";
+
+const forecastObject = (obj) => {
+    const date = new Date(obj.dt * 1000);
+
+    return {
+        date: `${date.getHours()<10?'0':''}${date.getHours()}:${date.getMinutes()<10?'0':''}${date.getMinutes()}`,
+        temp: obj.main.temp,
+        icon: obj.weather[0].icon,
+        desc: obj.weather[0].main,
+        humidity: obj.main.humidity
+    }
+}
 
 export const getCityWeather = (cityInfo) => {
     return async(dispatch, getState) => {
@@ -30,7 +42,10 @@ export const getCityWeather = (cityInfo) => {
 
             try { 
                 const cityWeatherInfo = await getCityWeatherInfo(latitude, longitude, format.unit);
+                let cityWeatherForecast = await getCityWeatherForecast(latitude, longitude, format.unit);
         
+                cityWeatherForecast = cityWeatherForecast.list.map( (hourWeather) => forecastObject(hourWeather) )
+
                 const citylastUpdateHour = new Date(cityWeatherInfo.dt * 1000)
                 const citySunriseHour = new Date(cityWeatherInfo.sys.sunrise * 1000)
                 const citySunsetHour = new Date(cityWeatherInfo.sys.sunset * 1000);
@@ -57,7 +72,8 @@ export const getCityWeather = (cityInfo) => {
                         `${citySunsetHour.getHours()<10?'0':''}${citySunsetHour.getHours()}:${citySunriseHour.getMinutes()<10?'0':''}${citySunriseHour.getMinutes()}`,
                         humidity:`${cityWeatherInfo.main.humidity} %`,
                         windSpeed: `${cityWeatherInfo.wind.speed} ${format.windMetric}`
-                    }
+                    },
+                    forecast: cityWeatherForecast.splice(0,5),
                 }
 
                 dispatch( selectCityToFetch(newCityInfo) )

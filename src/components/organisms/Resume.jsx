@@ -2,7 +2,7 @@ import '@styles/components/Resume.scss';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCityWeather } from '@/store/thunks/citiesWeatherThunk';
-import ResumeCard from './ResumeCard';
+import ResumeCard from '@/components/molecules/ResumeCard';
 
 function Resume(){
     const {

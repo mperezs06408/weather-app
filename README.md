@@ -26,6 +26,10 @@ This DEMO was developed using the next tools:
 - **Other tools**:
     - Axios module
 
+## New features
+
+- Added forecast by searched city within the next 15 hours
+
 ## Previews
 
 ### Mobile
